@@ -8,9 +8,9 @@ import Container from '@mui/material/Container';
 import { Paper } from '@mui/material';
 import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { LoadingButton } from '@mui/lab';
 import agent from '../../app/api/agent';
 import { toast } from 'react-toastify';
-import { LoadingButton } from '@mui/lab';
 
 export default function Register() {
     const history = useHistory();
