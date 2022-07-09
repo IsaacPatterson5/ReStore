@@ -82,8 +82,8 @@ export default function Register() {
                     {...register('password', { 
                         required: 'Password is required',
                         pattern: {
-                            value: /(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/,
-                            message: 'Password is not complex enough'
+                            value: /(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/,
+                            message: 'Password needs to be more than 6 characteres long with at least one symbol and capital letter and must have no spaces'
                         }
                     })}
                     error={!!errors.password}

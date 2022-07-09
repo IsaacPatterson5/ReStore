@@ -35,7 +35,7 @@ export const fetchProductsAsync = createAsyncThunk<Product[], void, {state: Root
             const response = await agent.Catalog.list(params); 
             thunkAPI.dispatch(setMetaData(response.metaData));
             return response.items;
-        } catch (error) {
+        } catch (error: any) {
             return thunkAPI.rejectWithValue({error: error.data})
         }
     }
@@ -46,7 +46,7 @@ export const fetchProductAsync = createAsyncThunk<Product, number>(
     async (productId, thunkAPI) => {
         try {
             return await agent.Catalog.details(productId)
-        } catch (error) { 
+        } catch (error: any) { 
             return thunkAPI.rejectWithValue({error: error.data})
         }
     }
@@ -57,7 +57,7 @@ export const fetchFilters = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             return agent.Catalog.fetchFilters();   
-        } catch (error) {
+        } catch (error: any) {
             return thunkAPI.rejectWithValue({error: error.data});
         }
     }
@@ -99,7 +99,15 @@ export const CatalogSlice = createSlice({
         },
         resetProductParams: (state) => {
             state.productParams = initParams();
-        }
+        },
+        setProduct: (state, action) => {
+            productsAdapter.upsertOne(state, action.payload);
+            state.productsLoaded = false;
+        },
+        removeProduct: (state, action) => {
+            productsAdapter.removeOne(state, action.payload);
+            state.productsLoaded = false;
+        },      
     },
     extraReducers: (builder => {
         builder.addCase(fetchProductsAsync.pending, (state) => {
@@ -143,4 +151,4 @@ export const CatalogSlice = createSlice({
 
 export const productSelectors = productsAdapter.getSelectors((state: RootState) => state.catalog);
 
-export const {setProductParams, resetProductParams, setMetaData, setPageNumber} = CatalogSlice.actions;
+export const {setProductParams, resetProductParams, setMetaData, setPageNumber, setProduct, removeProduct} = CatalogSlice.actions;
