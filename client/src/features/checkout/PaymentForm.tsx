@@ -29,6 +29,7 @@ export default function PaymentForm({cardState, onCardInputChange}: Props) {
             onChange={onCardInputChange}
             error={!!cardState.elementError.cardNumber}
             helperText={cardState.elementError.cardNumber}
+            id="cardNumber"
             label="Card number"
             fullWidth
             autoComplete="cc-number"
