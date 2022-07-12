@@ -28,6 +28,13 @@ import Inventory from "../../features/admin/Inventory";
 function App() {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
+  const setThemeInStorage = (theme: string) => {
+    localStorage.setItem('dark', theme)
+    setThemeInStorage('dark')
+ }
+ const getThemeInStorage = () => {
+  localStorage.getItem('theme') // returns 'light' in this case
+}
 
   const initApp = useCallback(async () => {
     try {
