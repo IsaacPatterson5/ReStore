@@ -66,7 +66,7 @@ export const fetchFilters = createAsyncThunk(
 function initParams() {
     return {
         pageNumber: 1,
-        pageSize: 6,
+        pageSize: 9,
         orderBy: 'name',
         brands: [],
         types: []
