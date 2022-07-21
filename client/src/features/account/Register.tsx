@@ -83,7 +83,7 @@ export default function Register() {
                         required: 'Password is required',
                         pattern: {
                             value: /(?=^.{6,}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/,
-                            message: 'Password needs to be more than 6 characteres long with at least one symbol, a special character, a capital letter and must have no spaces'
+                            message: 'Password needs to be more than 6 characteres long with at least one number, a capital letter and must have no spaces'
                         }
                     })}
                     error={!!errors.password}
